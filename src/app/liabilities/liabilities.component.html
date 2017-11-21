@@ -1,0 +1,23 @@
+<h2>Liabilties</h2>
+<ul class="liabilities">
+  <li *ngFor="let liability of liabilities"
+    [class.selected]="liability === selectedLiability"
+    (click)="onSelect(liability)">
+    <span class="badge">{{liability.id}}</span> {{liability.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedLiability">
+
+  <h2>{{ selectedLiability.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedLiability.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedLiability.name" placeholder="name">
+    </label>
+  </div>
+  <div><span>balance: </span>{{selectedLiability.balance | currency}}</div>
+  <div><span>payment: </span>{{selectedLiability.payment | currency}}</div>
+  <div><span>rate: </span>{{selectedLiability.rate | percent}}</div>
+
+</div>
